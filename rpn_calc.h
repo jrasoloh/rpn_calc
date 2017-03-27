@@ -33,4 +33,4 @@ int                     ft_rpn_calc(int_list *nb, op_list *op);
 int_list				*ft_make_nb_list(char *str);
 op_list					*ft_make_op_list(char *str);
 
-#endif /* rpn_calc_h */
+#endif
