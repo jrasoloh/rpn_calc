@@ -7,6 +7,7 @@
 //
 
 #include "rpn_calc.h"
+#include <string.h>
 
 int                 ft_rpn_calc(int_list *nb, op_list *op)
 {
@@ -30,12 +31,14 @@ int                 ft_rpn_calc(int_list *nb, op_list *op)
 }
 int                 main()
 {
-    int_list        numbers;
-    op_list         operator;
+    int_list        *numbers;
+    op_list         *operator;
     int             nb;
     int             op;
+	char			*str;
     
-    numbers.data = 12;
+	str = strdup("12 3 + 45 / 454 * 1237 / 15 * 45 %");
+ /*   numbers.data = 12;
     numbers.next = NULL;
     operator.data = '+';
     operator.next = NULL;
@@ -45,11 +48,13 @@ int                 main()
     ft_add_nb(&numbers, 17);
     ft_add_op(&operator, '-');
     ft_add_op(&operator, '+');
-    ft_add_op(&operator, '-');
-    nb = ft_count_nb(&numbers);
-    op = ft_count_op(&operator);
+    ft_add_op(&operator, '-');*/
+	numbers = ft_make_nb_list(str);
+	operator = ft_make_op_list(str);
+    nb = ft_count_nb(numbers);
+    op = ft_count_op(operator);
     printf("il y a %d nombres et %d operateurs\n", nb, op);
-    printf("le calcul donne %d\n", ft_rpn_calc(&numbers, &operator));
+    printf("le calcul donne %d\n", ft_rpn_calc(numbers, operator));
     return (0);
 }
 

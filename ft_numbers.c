@@ -38,3 +38,30 @@ int                 ft_count_nb(int_list *begin_list)
     }
     return (i);
 }
+
+int_list			*ft_make_nb_list(char *str)
+{
+	int_list		*begin_list;
+	int				i;
+
+	begin_list = NULL;
+	begin_list = malloc(sizeof(int_list) * 1);
+	begin_list->data = 0;
+	begin_list->next = NULL;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] > 47 && str[i] < 58)
+		{
+			if (begin_list->data == 0)
+				begin_list->data = atoi(&str[i]);
+			else
+				ft_add_nb(begin_list, atoi(&str[i]));
+			while (str[i] > 47 && str[i] < 58)
+				i++;
+		}
+		else
+			i++;
+	}
+	return (begin_list);
+}

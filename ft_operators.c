@@ -38,3 +38,30 @@ int                 ft_count_op(op_list *begin_list)
     }
     return (i);
 }
+
+
+op_list			*ft_make_op_list(char *str)
+{
+	op_list		*begin_list;
+	int			i;
+
+	begin_list = NULL;
+	begin_list = malloc(sizeof(op_list) * 1);
+	begin_list->data = 0;
+	begin_list->next = NULL;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '+' || str[i] == '-' || str[i] == '/' || str[i] == '*' || str[i] == '%')
+		{
+			if (begin_list->data == 0)
+				begin_list->data = str[i];
+			else
+				ft_add_op(begin_list, str[i]);
+			i++;
+		}
+		else
+			i++;
+	}
+	return (begin_list);
+}
